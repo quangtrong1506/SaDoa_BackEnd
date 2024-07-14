@@ -1,4 +1,4 @@
-import { PAGINATE_OPTIONS } from '../../config/constant.js';
+import { PAGINATE_OPTIONS } from "../../config/constant.js";
 class BaseRepository {
     constructor(model) {
         this.setModel(model);
@@ -12,7 +12,7 @@ class BaseRepository {
         this.model = model;
     }
 
-    store(data, user) {
+    store(data) {
         return this.getModel().create(data);
     }
 
@@ -33,7 +33,7 @@ class BaseRepository {
         });
     }
 
-    update(id, data, user) {
+    update(id, data) {
         return this.getModel().findByIdAndUpdate(id, data);
     }
 
@@ -42,9 +42,12 @@ class BaseRepository {
             deleted_at: new Date(),
         });
     }
+    destroy(id) {
+        return this.getModel().findByIdAndRemove(id);
+    }
 
     paginate(conditions = {}, options = {}) {
-        if (typeof options.sort !== 'object') {
+        if (typeof options.sort !== "object") {
             options.sort = PAGINATE_OPTIONS.sort;
         }
 

@@ -1,9 +1,5 @@
-import Albums from './slice/albums.js';
-import Category from './slice/category.js';
-import Works from './slice/works.js';
+import Docs from "./slice/docs.js";
 const router = (app) => {
-    Albums(app);
-    Category(app);
-    Works(app);
+    Docs(app);
 };
 export default router;
