@@ -107,6 +107,14 @@ class UserController extends BaseController {
                     limit: 0,
                     docs: [],
                 };
+            const promise1 = [];
+            if (works.albums)
+                promise1.push(
+                    WorksRepository.findBy({
+                        albums: works.albums,
+                        type: works.type,
+                    })
+                );
             const all = await Promise.all(
                 works.category.map((cat) =>
                     WorksRepository.findBy({
