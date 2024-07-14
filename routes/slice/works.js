@@ -2,6 +2,7 @@ import express from 'express';
 import WorksController from '../../app/Http/Controllers/WorksController.js';
 const usersAdminRouter = (app) => {
     const router = express.Router();
+    router.get('/index', WorksController.index);
     router.get('/', WorksController.index);
     router.post('/', WorksController.store);
     router.get('/:id', WorksController.get);
